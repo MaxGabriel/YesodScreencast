@@ -80,6 +80,8 @@ library
                  , containers
                  , vector
                  , time
+                 , markdown
+                 , yesod-text-markdown
 
 executable         MyBlog
     if flag(library-only)
