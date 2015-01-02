@@ -2,13 +2,7 @@ module Handler.PostNew where
 
 import Import
 import Yesod.Form.Bootstrap3
-import Text.Markdown (Markdown)
 import Yesod.Text.Markdown
-
-data BlogPost = BlogPost
-        { title :: Text
-        , article :: Markdown
-        }
 
 blogPostForm :: AForm Handler BlogPost
 blogPostForm = BlogPost 
@@ -25,6 +19,8 @@ postPostNewR :: Handler Html
 postPostNewR = do
     ((res, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm blogPostForm
     case res of
-      FormSuccess _ -> error "todo"
+      FormSuccess blogPost -> do
+              _ <- runDB $ insert blogPost
+              error "todo"
       _ -> defaultLayout $(widgetFile "posts/new")
 
