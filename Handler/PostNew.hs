@@ -20,7 +20,7 @@ postPostNewR = do
     ((res, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm blogPostForm
     case res of
       FormSuccess blogPost -> do
-              _ <- runDB $ insert blogPost
-              error "todo"
+              blogPostId <- runDB $ insert blogPost
+              redirect $ PostDetailsR blogPostId
       _ -> defaultLayout $(widgetFile "posts/new")
 
