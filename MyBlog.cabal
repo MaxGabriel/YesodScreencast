@@ -21,6 +21,7 @@ library
                      Handler.Common
                      Handler.Home
                      Handler.PostNew
+                     Handler.PostDetails
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
