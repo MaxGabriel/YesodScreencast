@@ -1,0 +1,8 @@
+<h1> All Posts
+
+<div .jumbotron>
+  <ul>
+    $forall Entity id post <- allPosts
+      <h4>
+        <li>
+          <a href=@{PostDetailsR id}>#{blogPostTitle post}
